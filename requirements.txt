@@ -8,7 +8,7 @@ django-vanilla-views==2.0.0
 idna==2.10
 Pillow==7.2.0
 pytz==2020.4
-requests==2.25.0
+requests==2.25.1
 six==1.15.0
 soupsieve==2.0.1
 sqlparse==0.4.1
