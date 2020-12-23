@@ -1,0 +1,7 @@
+libssl-dev
+libffi-dev
+docker
+sudo apt remove golang-docker-credential-helpers
+docker-compose
+certbot
+

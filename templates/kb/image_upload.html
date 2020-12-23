@@ -1,0 +1,14 @@
+{% extends 'bases/base.html' %}
+
+{% load static %}
+
+{% block title %}Image Upload - {% endblock %}
+
+{% block header %}Image Upload{% endblock %} </h4>
+{% block subheader %}Use the form below upload an image.{% endblock %}
+
+{% block content %}
+
+    {%  include 'kb/snippets/image_form.html' with form=form article=article %}
+
+{% endblock %}

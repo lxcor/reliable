@@ -1,0 +1,61 @@
+{% load static %}
+
+<div class="col-md-8">
+<div class="card card-user">
+  <div class="card-header">
+
+    <div class="row">
+        <div class="col-md-11">
+            <h4 class="card-title m-2">{{ article.title }}</h4>
+        </div>
+        <div class="col-md-1 pull-right">
+            <div class="dropdown">
+                <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="nc-icon nc-settings"></i>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="{% url 'edit-article' article.pk %}">Modify article</a>
+                    <a class="dropdown-item" href="{% url 'delete-article' article.pk %}">Remove article</a>
+                    <a class="dropdown-item" href="{% url 'upload-image' article.pk %}">Upload Image</a>
+                    <a class="dropdown-item" href="{% url 'upload-file' article.pk %}">Upload File</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+  </div>
+
+    <div class="card-body">
+
+        <blockquote class="text-justify m-2">{{ article.description }}</blockquote>
+
+        <ul class="m-3">
+            {% for file in article.file_set.all %}
+                <li><a href="{{ file.file.url }}" target="_">{{ file.file.name }}</a></li>
+            {% endfor %}
+        </ul>
+
+        <div class="container m-2 mt-5">
+            <div class="card-columns">
+                {% for image in article.image_set.all %}
+                    <div class="card">
+                    {% if image.image %}
+                        <img class="card-img" src="{{ image.image.url }}" alt="{{ image.image.name }}" width="120px" height="auto">
+                    {% endif %}
+                    {% if image.src %}
+                        <img class="card-img" src="{{ image.src }}" alt="" width="120px" height="auto">
+                    {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <p class="category m-4 pull-right">Created {{ article.created }} - Last modified {{ article.modified }} - <a href="{{ article.url }}" target="_">Source</a></p>
+
+    </div>
+
+</div>
+</div>
+
+
+

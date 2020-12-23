@@ -1,0 +1,12 @@
+{% extends 'bases/base.html' %}
+
+{% load static %}
+
+{% block header %}Article Detail{% endblock %} </h4>
+{% block subheader %}This article contain the following information.{% endblock %}
+
+{% block content %}
+
+    {%  include 'kb/snippets/article_detail.html' with article=article %}
+
+{% endblock %}

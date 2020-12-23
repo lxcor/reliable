@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  web:
+    image: reliable
+    ports:
+      - '80:80'
+      - '443:80'
+    expose:
+      - '80'
+      - '443'
+    env_file:
+      - '.env'

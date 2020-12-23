@@ -1,0 +1,16 @@
+{% extends 'bases/base.html' %}
+
+{% load static %}
+
+{% block title %}Create New Article - {% endblock %}
+
+{% block header %}Create new article{% endblock %} </h4>
+{% block subheader %}Complete the form below to create a new article.{% endblock %}
+
+{% block content %}
+
+  {%  include 'kb/snippets/article_form.html' with form=form article=false %}
+
+{% endblock %}
+
+

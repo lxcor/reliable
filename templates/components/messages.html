@@ -1,0 +1,14 @@
+{% if messages %}
+    <div class="container m-50px-b p-0px">
+        {% for message in messages %}
+        <div class="row m-0px p-0px">
+            <div class="col-12 p-0px">
+                <div class="alert alert-{{ message.tags }} alert-dismissible">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>{{ message.tags|capfirst }}!</strong> {{message}}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endif %}

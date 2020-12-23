@@ -1,0 +1,27 @@
+{% extends 'bases/base.html' %}
+
+{% load static %}
+
+{% block title %}Edit Article - {% endblock %}
+
+{% block header %}Edit Article{% endblock %} </h4>
+{% block subheader %}Use the form below to edit this article.{% endblock %}
+
+{% block content %}
+
+    {%  include 'kb/snippets/article_form.html' with form=form article=article %}
+
+    <div class="card card-plain">
+        <div class="card-header">
+            Other Actions
+        </div>
+        <div class="card-body">
+            <ul>
+                <li><a href="{% url 'delete-article' article.pk %}">Delete Article</a></li>
+                <li><a href="{% url 'upload-image' article.pk %}">Upload Image</a></li>
+                <li><a href="{% url 'upload-file' article.pk %}">Upload File</a></li>
+            </ul>
+        </div>
+    </div>
+
+{% endblock %}

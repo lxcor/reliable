@@ -1,0 +1,60 @@
+{% extends 'bases/base.html' %}
+
+{% load static %}
+{% load humanize %}
+
+{% block title %}List Articles - {% endblock %}
+
+{% block header %}List Articles{% endblock %} </h4>
+{% block subheader %}{{ article_list.count }} records found.{% endblock %}
+
+{% block content %}
+
+    {% if article_list %}
+
+      <div class="ml-3 mr-3">
+        <div class="card-body card-plain">
+        <div class="table-responsive">
+          <table class="table table-striped">
+
+            <thead class="text-primary">
+              <th>#</th>
+              <th>Title</th>
+              <th>No. of Images</th>
+              <th>No. of Files</th>
+              <th>Created</th>
+              <th>Modified</th>
+              <th></th>
+            </thead>
+
+            <tbody>
+
+                {% for article in article_list %}
+
+                  <tr>
+                    <td><a href="{% url 'read-article' article.pk %}">{{ article.pk }}</a></td>
+                    <td>{{ article.title }}</td>
+                    <td>{% if article.n_images > 0 %}{{ article.n_images }}{% endif %}</td>
+                    <td>{% if article.n_files > 0 %}{{ article.n_files }}{% endif %}</td>
+                    <td>{{ article.created|naturalday }}</td>
+                    <td>{{ article.modified|naturaltime }}</td>
+                    <td class="text-right"><a href="{% url 'edit-article' article.pk %}" class="btn btn-sm btn-primary"><i class="nc-icon nc-ruler-pencil"></i></a></td>
+                    <td class="text-right">
+                        <form method="GET" action="{% url 'delete-article' article.pk %}">
+                            {% csrf_token %}
+                        <button type="submit" class="btn btn-sm btn-danger"><i class="nc-icon nc-simple-remove"></i></button>
+                        </form>
+                    </td>
+                  </tr>
+
+                {% endfor %}
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+      </div>
+
+    {% endif %}
+
+{% endblock %}

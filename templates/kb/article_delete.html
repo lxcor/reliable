@@ -1,0 +1,26 @@
+{% extends 'bases/base.html' %}
+
+{% load static %}
+
+{% block title %}Delete Article - {% endblock %}
+
+{% block header %}Delete Article{% endblock %} </h4>
+{% block subheader %}Click the button below to delete this article.{% endblock %}
+
+{% block content %}
+
+    {%  include 'kb/snippets/article_detail.html' with article=article %}
+
+    <div class="row">
+        <div class="col-md-2 m-3">
+            <form method="POST" action="{% url 'delete-article' article.pk %}">
+            {% csrf_token %}
+                <input type="submit" class="btn btn-sm btn-danger" value="Delete Permanently">
+            </form>
+        </div>
+        <div class="col-md-2 m-3">
+            <a href="{% url 'list-articles' %}" class="btn btn-link">Cancel</a>
+        </div>
+    </div>
+
+{% endblock %}
